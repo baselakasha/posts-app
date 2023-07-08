@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="modal" id="add-post-modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Create a post</p>
+                <button class="delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+                <form action="">
+                    {% csrf_token %}
+                    <div class="field">
+                        <div class="control">
+                            <textarea id="post-content" class="textarea"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button is-success" id="save-post">Save changes</button>
+                <button class="button">Cancel</button>
+            </footer>
+        </div>
+    </div>
+
+    <div class="side side--left"></div>
+    <div class="side side--right"></div>
+
+    <header class="">
+        <div class="relative py-6 small-container">
+            <img class="tringle" src="{% static 'tringle.svg'%}" alt="">
+            <img class="circle" src="{% static 'circle.svg'%}" alt="">
+            <span class="icon-text">
+                <div class="is-size-4 name pl-4">
+                    <div class="icon-text">
+                        <span class="icon">
+                            <i class="fas fa-user-circle is-size-4 pr-5"></i>
+                        </span>
+                        {{ request.user }}
+                    </div>
+                </div>
+                <button class="icon js-modal-trigger" data-target="add-post-modal" id="add-button">
+                    <i class="fas fa-edit is-size-4"></i>
+                </button>
+            </span>
+        </div>
+    </header>
+    <template id="post-template">
+        <div class="post has-background-white p-5 mb-5">
+            <div class="post__header">
+                <span class="icon-text">
+                    <span class="icon">
+                        <i class="fas fa-user-circle is-size-4"></i>
+                    </span>
+                    <div class="post-author is-size-5 name ml-3"></div>
+                </span>
+            </div>
+            <div class="post-content post__body mt-3"></div>
+        </div>
+    </template>
+    <main class="main-container small-container has-background-light mt-3 p-5" id="post-list">
+    </main>
+    <style>
+        .side--left,
+        .side--right {
+            background-image: url("{% static 'side.svg' %}");
+        }
+    </style>
+    {% block scripts %}
+        <script src="{% static 'scripts/index.js' %}"></script>
+    {% endblock %}
+{% endblock %}
