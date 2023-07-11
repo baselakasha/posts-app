@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load bulma_tags %}
+
+{% block content %}
+    <div class="p-5">
+        <h1 class="title is-1 mt-0 pt-0">Profile</h1>
+        <form action="" method="POST">
+            {{ form | bulma }}
+            {% csrf_token %}
+            <button class="button is-primary mt-3">Save</button>
+        </form>
+    </div>
+{% endblock %}

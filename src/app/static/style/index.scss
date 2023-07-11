@@ -99,7 +99,7 @@ header {
 	}
 
 	position: relative;
-	min-height: 125vh;
+	min-height: 83vh;
 }
 
 #add-button {
@@ -129,4 +129,12 @@ header {
 
 .relative {
 	position: relative;
+}
+
+.is-primary {
+	background-color: #a13f3fc7 !important;
+}
+
+.name {
+	color: inherit;
 }

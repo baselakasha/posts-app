@@ -18,7 +18,35 @@
         <title>{{ page_title }}</title>
     </head>
     <body>
-        {% block content%}{% endblock%}
+        <div class="side side--left"></div>
+        <div class="side side--right"></div>
+
+        <header class="">
+            <div class="relative py-6 small-container">
+                <img class="tringle" src="{% static 'tringle.svg'%}" alt="">
+                <img class="circle" src="{% static 'circle.svg'%}" alt="">
+                <span class="icon-text">
+                    <a class="is-size-4 name pl-4" href="{% url 'update-profile' request.user.pk %}">
+                        <div class="icon-text">
+                            <span class="icon">
+                                <i class="fas fa-user-circle is-size-4 pr-5"></i>
+                            </span>
+                            {{ request.user }}
+                        </div>
+                    </a>
+                    {% block header_right %}{% endblock %}
+                </span>
+            </div>
+        </header>
+        <main class="main-container small-container has-background-light mt-3 p-5">
+            {% block content%}{% endblock %}
+        </main>
+        <style>
+            .side--left,
+            .side--right {
+                background-image: url("{% static 'side.svg' %}");
+            }
+        </style>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         {% block scripts %}{% endblock %}
     </body>
