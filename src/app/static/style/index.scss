@@ -112,6 +112,11 @@ header {
 
 .post {
 	border-radius: 1.4rem;
+	&__header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
 }
 
 .has-background-light {

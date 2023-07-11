@@ -27,8 +27,11 @@ function show_posts(){
             $("#post-list").html("");
             for (let i = 0; i < data.length; i++) {
                 let post = data[i];
+                let date = new Date(post.created_at);
+
                 template.find(".post-content").text(post.content);
                 template.find(".post-author").text(post.author.__str__);
+                template.find(".post-date").text(date.toLocaleString());
                 $("#post-list").append(template.clone());
             }
         }
